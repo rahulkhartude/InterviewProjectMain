@@ -1,0 +1,50 @@
+<h2>{{ Myname }}</h2>
+
+<div *ngIf="subscribedQues">
+  {{ index + 1 }} {{ subscribedQues[index].questionText }}
+
+  <div
+    *ngIf="
+      subscribedQues[index].type === 'Multiple-Response';
+      then mulRes;
+      else radioRes
+    "
+  ></div>
+
+  <ng-template #mulRes
+    ><form>
+      <span
+        *ngFor="let item1 of subscribedQues[index].options; index as iMultiple"
+      >
+        <input
+          type="checkbox"
+          name="index"
+          (click)="studentmChoice(iMultiple)"
+          [checked]="isCheck(iMultiple)"
+        />{{ item1 }}
+        <br />
+      </span></form
+  ></ng-template>
+
+  <ng-template #radioRes>
+    <form>
+      <span
+        *ngFor="let item2 of subscribedQues[index].options; index as iRadio"
+      >
+        <input
+          type="radio"
+          value=""
+          name="item2"
+          (click)="studentrChoice(iRadio)"
+          [checked]="isCheckR(iRadio)"
+        />{{ item2 }}
+        <br />
+      </span></form
+  ></ng-template>
+</div>
+<div *ngIf="subscribedQues">
+  <button (click)="change(1)" [disabled]="nextmethod()">Next</button>
+  <button (click)="change(0)" [disabled]="prevmethod()">Prev</button>
+</div>
+<br /><br /><br />
+<button (click)="finish()">Finish Test</button>

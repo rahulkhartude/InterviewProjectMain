@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interview</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>My Interview Portal</h1>
+        <hr />
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Test</th>
+                <th>No of Questions</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="subscribedData">
+              <tr>
+                <td>AngularJS Test</td>
+                <td>{{ subscribedData.tests[0].questions.length }}</td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    (click)="
+                      testAngular(
+                        subscribedData.tests[0].name,
+                        subscribedData.tests[0]._id
+                      )
+                    "
+                    >Start
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Javascript Test</td>
+                <td>{{ subscribedData.tests[1].questions.length }}</td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    (click)="
+                      testJavascript(
+                        subscribedData.tests[1].name,
+                        subscribedData.tests[1]._id
+                      )
+                    "
+                    >Start</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Java Test</td>
+                <td></td>
+                <td><a href="test.html" class="btn btn-warning">Start</a></td>
+              </tr>
+              <tr>
+                <td>NodeJS Test</td>
+                <td>{{ subscribedData.tests[2].questions.length }}</td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    (click)="
+                      testNode(
+                        subscribedData.tests[2].name,
+                        subscribedData.tests[2]._id
+                      )
+                    "
+                    >Start</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      API Url:
+      <a href="http://interviewapi.stgbuild.com/getQuizData" target="_blank"
+        >http://interviewapi.stgbuild.com/getQuizData</a
+      >
+      <br /><br />
+      <a
+        href="http://interviewapi.stgbuild.com/html-design.zip"
+        target="_blank"
+        class="btn btn-default"
+        >Download Design</a
+      >
+    </div>
+  </body>
+</html>
